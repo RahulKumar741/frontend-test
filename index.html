@@ -8,10 +8,15 @@
 
       onMounted(async () => {
         try {
-          const res = await fetch("inspections.json")
+          console.log("🔍 Trying to fetch inspections.json...")
+          const res = await fetch("./inspections.json")
+          console.log("Response status:", res.status)
+          if (!res.ok) throw new Error("Response not ok: " + res.status)
           inspections.value = await res.json()
+          console.log("✅ Data loaded:", inspections.value)
         } catch (err) {
-          error.value = "Failed to load data"
+          error.value = "❌ Failed to load inspections: " + err.message
+          console.error("Fetch error:", err)
         } finally {
           loading.value = false
         }
