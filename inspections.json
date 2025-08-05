@@ -1,0 +1,4 @@
+[
+  { "id": 1, "site": "Factory A", "status": "Pending", "date": "2025-08-10" },
+  { "id": 2, "site": "Factory B", "status": "Completed", "date": "2025-08-01" }
+]
