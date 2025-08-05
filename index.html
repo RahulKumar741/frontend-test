@@ -1,0 +1,23 @@
+<script>
+  const { createApp, ref, onMounted } = Vue
+  createApp({
+    setup() {
+      const inspections = ref([])
+      const error = ref("")
+      const loading = ref(true)
+
+      onMounted(async () => {
+        try {
+          const res = await fetch("inspections.json")
+          inspections.value = await res.json()
+        } catch (err) {
+          error.value = "Failed to load data"
+        } finally {
+          loading.value = false
+        }
+      })
+
+      return { inspections, loading, error }
+    }
+  }).mount("#app")
+</script>
